@@ -1,4 +1,27 @@
+'use client';
+import { useRouter } from "next/navigation"
+import { useState } from "react";
+import axios from "axios";
+
 export default () => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const router = useRouter();
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post('https://192.168.1.244:8000/api/login/', {
+                username,
+                password
+            });
+            console.log(response.data); // Handle success
+            router.push('/')
+            
+        } catch (error) {
+            console.error('Login failed', error); // Handle error
+        }
+    };
+
     return (
         <main className="w-full h-screen flex flex-col items-center justify-center bg-gray-50 sm:px-4">
             <div className="w-full space-y-6 text-gray-600 sm:max-w-md">
@@ -56,25 +79,29 @@ export default () => {
                         <p className="inline-block w-fit text-sm bg-white px-2 absolute -top-2 inset-x-0 mx-auto">Or continue with</p>
                     </div>
                     <form
-                        onSubmit={(e) => e.preventDefault()}
+                        onSubmit={handleLogin}
                         className="space-y-5"
                     >
                         <div>
                             <label className="font-medium">
-                                Email
+                                Username*
                             </label>
                             <input
-                                type="email"
+                                type="text"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
                                 required
                                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                             />
                         </div>
                         <div>
                             <label className="font-medium">
-                                Password
+                                Password*
                             </label>
                             <input
                                 type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                                 required
                                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                             />
