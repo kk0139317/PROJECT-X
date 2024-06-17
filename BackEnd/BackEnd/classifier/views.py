@@ -153,3 +153,22 @@ def LivePredictor(request):
         # Log the error
         print(f"Error during live prediction: {e}")
         return Response({'error': str(e)}, status=500)
+    
+
+
+@api_view(['POST'])
+def create_user(request):
+    data = request.data
+    name = data.get('name')
+    username = data.get('username')
+    email = data.get('email')
+    password = data.get('password')
+    # print(name, username, email, password)
+    # Perform validation and user creation logic
+    try:
+        user = User.objects.create_user(username=username, email=email, password=password)
+        user.save()
+        # Optionally, perform additional tasks like sending confirmation email
+        return Response({'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
+    except Exception as e:
+        return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)

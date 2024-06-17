@@ -1,4 +1,33 @@
+import React, { useState } from "react"
 export default () => {
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(null)
+   
+  
+    async function handleRegister(event) {
+        event.preventDefault()
+        const formData = new FormData(event.target)
+        try {
+            const formData = new FormData(event.currentTarget)
+            const response = await fetch('https://192.168.1.244:8000/api/createuser/', {
+              method: 'POST',
+              body: formData,
+            })
+          if (!response.ok) {
+            throw new Error('Failed to submit the data. Please try again.')
+          }
+     
+          // Handle response if necessary
+          const data = await response.json()
+          // ...
+        } catch (error) {
+          // Capture the error message to display to the user
+          setError(error.message)
+          console.error(error)
+        } finally {
+          setIsLoading(false)
+        }
+    }
     return (
         <main className="w-full flex">
             <div className="relative flex-1 hidden items-center justify-center h-screen bg-gray-900 lg:flex">
@@ -84,8 +113,9 @@ export default () => {
                         <span className="block w-full h-px bg-gray-300"></span>
                         <p className="inline-block w-fit text-sm bg-white px-2 absolute -top-2 inset-x-0 mx-auto">Or continue with</p>
                     </div>
+                    {error && <div style={{ color: 'red' }}>{error}</div>}
                     <form
-                        onSubmit={(e) => e.preventDefault()}
+                        onSubmit={handleRegister}
                         className="space-y-5"
                     >
                         <div>
@@ -94,6 +124,7 @@ export default () => {
                             </label>
                             <input
                                 type="text"
+                                name = 'name' placeholder='Name*' 
                                 required
                                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                             />
@@ -104,6 +135,18 @@ export default () => {
                             </label>
                             <input
                                 type="email"
+                                name="email" placeholder="Email*" 
+                                required
+                                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                            />
+                        </div>
+                                                <div>
+                            <label className="font-medium">
+                                Username
+                            </label>
+                            <input
+                                type="text"
+                                name="username" placeholder="Username*" 
                                 required
                                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                             />
@@ -114,14 +157,18 @@ export default () => {
                             </label>
                             <input
                                 type="password"
+                                name="password" placeholder="Password*"
                                 required
                                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                             />
                         </div>
                         <button
                             className="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150"
+                            disabled={isLoading}
+                            type="submit"
                         >
-                            Create account
+                        {isLoading ? 'Loading...' : 'Submit'}
+
                         </button>
                     </form>
                 </div>

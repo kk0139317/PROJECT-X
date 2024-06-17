@@ -9,4 +9,5 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('download', views.download_file, name="Dowlonad"),
     path('livepredict/', views.LivePredictor, name="Live Predictor"),
+    path('createuser/', views.create_user, name="Createuser"),
 ]
