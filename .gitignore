@@ -1,0 +1,22 @@
+# Node
+node_modules/
+dist/
+
+# Python
+*.pyc
+__pycache__/
+
+# Environment variables
+.env
+env/
+# Media files
+media/
+
+# Other files to ignore
+.DS_Store
+.h5
+.weights
+.key
+.pem
+.exe
+.crt
