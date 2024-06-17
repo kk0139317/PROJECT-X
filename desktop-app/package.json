@@ -1,0 +1,32 @@
+{
+  "name": "desktop-app",
+  "version": "1.0.0",
+  "description": "Desktop application for dog and cat classification",
+  "author": "Kundan Kumar <kk4881757@gmail.com.com>",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.classification.desktop-app",
+    "productName": "Desktop App",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "../frontend/**/*",
+      "main.js"
+    ],
+    "extraResources": [
+      {
+        "from": "../frontend/Backend/Backend",
+        "to": "resources"
+      }
+    ]
+  },
+  "devDependencies": {
+    "electron": "^15.5.7",
+    "electron-builder": "^24.13.3"
+  }
+}
