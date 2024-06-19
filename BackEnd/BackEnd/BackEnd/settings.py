@@ -84,14 +84,14 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-CORS_ALLOW_ALL_ORIGINS = False  # Allow only origins in CORS_ALLOWED_ORIGINS
-CORS_ALLOWED_ORIGINS = [
-    "https://127.0.0.1:3000",
-    "https://192.168.1.244:3000",
-    "http://127.0.0.1:3000",
-    "http://192.168.1.244:3000",
-    "https://localhost:3000"
-]
+CORS_ALLOW_ALL_ORIGINS = True  # Allow only origins in CORS_ALLOWED_ORIGINS
+# CORS_ALLOWED_ORIGINS = [
+#     "https://127.0.0.1:3000",
+#     "https://192.168.1.244:3000",
+#     "http://127.0.0.1:3000",
+#     "http://192.168.1.244:3000",
+#     "https://localhost:3000"
+# ]
 CORS_ALLOW_HEADERS = [
     'accept',
     'accept-encoding',

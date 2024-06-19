@@ -43,7 +43,9 @@ class ImageUploadView(APIView):
         image = file_obj
         prediction = result['prediction']
         confidence = result['confidence']
-        url = request.data['url']
+        print(confidence)
+        # url = request.data['url']
+        url = 'htps://127.0.0.1:8000'
         
         # Get image dimensions
         img = Image.open(img_path)
