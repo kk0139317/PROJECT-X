@@ -2,7 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:image_picker/image_picker.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 
 class UploadImageScreen extends StatefulWidget {
@@ -78,7 +80,7 @@ class _UploadImageScreenState extends State<UploadImageScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Select Image Source'),
+          title: const Text('Select Image Source'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
@@ -109,7 +111,7 @@ class _UploadImageScreenState extends State<UploadImageScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Upload Image'),
+        title: const Text('Upload Image'),
       ),
       body: Center(
         child: Padding(
@@ -146,29 +148,29 @@ class _UploadImageScreenState extends State<UploadImageScreen> {
                       )
                     : null,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               if (_prediction != null)
                 Text(
                   'Prediction: $_prediction',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               if (_confidence != null)
                 Text(
                   'Confidence: ${(_confidence!).toStringAsFixed(2)}%',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton.icon(
                 onPressed: _showImageSourceDialog,
                 icon: Icon(Icons.image),
-                label: Text(
+                label: const Text(
                   'Upload Image',
                   style: TextStyle(fontSize: 16),
                 ),

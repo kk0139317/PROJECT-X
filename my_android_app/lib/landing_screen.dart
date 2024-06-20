@@ -5,7 +5,7 @@ class LandingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Welcome to Dog & Cat Classifier'),
+        title: const Text('Welcome to Dog & Cat Classifier'),
       ),
       drawer: Drawer(
         child: ListView(
@@ -15,7 +15,7 @@ class LandingScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor,
               ),
-              child: Text(
+              child: const Text(
                 'Navigation Menu',
                 style: TextStyle(
                   color: Colors.white,
@@ -24,19 +24,19 @@ class LandingScreen extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: Text('Home'),
+              title: const Text('Home'),
               onTap: () {
                 Navigator.pop(context); // Close drawer
               },
             ),
             ListTile(
-              title: Text('Upload Image'),
+              title: const Text('Upload Image'),
               onTap: () {
                 Navigator.pushNamed(context, '/upload');
               },
             ),
             ListTile(
-              title: Text('Prediction'),
+              title: const Text('Prediction'),
               onTap: () {
                 Navigator.pushNamed(context, '/prediction');
               },
@@ -94,15 +94,15 @@ class LandingScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, '/upload');
                   },
-                  child: Text('Get Started'),
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                     elevation: 3,
                     shadowColor: Colors.blueAccent,
                   ),
+                  child: const Text('Get Started'),
                 ),
               ],
             ),

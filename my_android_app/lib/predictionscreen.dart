@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 
 class PredictionsScreen extends StatefulWidget {
@@ -42,7 +43,7 @@ class _PredictionsScreenState extends State<PredictionsScreen> {
         title: Text('Predictions'),
       ),
       body: _predictions.isEmpty
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           : ListView.builder(
@@ -89,7 +90,7 @@ class _PredictionsScreenState extends State<PredictionsScreen> {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('Close'),
+                child: const Text('Close'),
               ),
             ],
           ),
